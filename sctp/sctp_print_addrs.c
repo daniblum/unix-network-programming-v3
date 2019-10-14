@@ -1,14 +1,13 @@
 #include	"unp.h"
 
 void
-sctp_print_addresses(struct sockaddr_storage *addrs, int num)
+sctp_print_addresses(struct sockaddr *addrs, int num)
 {
 	struct sockaddr_storage *ss;
-	int i,salen;
+	int i,salen=0;
 
-	ss = addrs;
+	ss = (struct sockaddr_storage *) addrs;
 	for(i=0; i<num; i++){
-		printf("%s\n", Sock_ntop((SA *)ss, salen));
 #ifdef HAVE_SOCKADDR_SA_LEN
 		salen = ss->ss_len;
 #else
@@ -26,6 +25,7 @@ sctp_print_addresses(struct sockaddr_storage *addrs, int num)
 			break;
 		}
 #endif
+		printf("%s\n", Sock_ntop((SA *)ss, salen));
 		ss = (struct sockaddr_storage *)((char *)ss + salen);
 	}
 }

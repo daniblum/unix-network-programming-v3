@@ -30,7 +30,7 @@ sctpstr_cli(FILE *fp, int sock_fd, struct sockaddr *to, socklen_t tolen)
 				     (SA *)&peeraddr, &len,
 				     &sri,&msg_flags);
 			if(msg_flags & MSG_NOTIFICATION)
-				check_notification(sock_fd,recvline,rd_sz);
+				sctp_check_notification(sock_fd,recvline,rd_sz);
 		} while (msg_flags & MSG_NOTIFICATION);
 		printf("From str:%d seq:%d (assoc:0x%x):",
 		       sri.sinfo_stream,sri.sinfo_ssn,

@@ -1,5 +1,9 @@
 #include	"unp.h"
 
+#if !defined MSG_EOF
+#define MSG_EOF SCTP_EOF
+#endif
+
 int
 main(int argc, char **argv)
 {

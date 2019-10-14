@@ -1,5 +1,13 @@
 #include	"unp.h"
 
+uint8_t *
+pdapi_recvmsg(int sock_fd,
+	      size_t *rdlen,
+	      SA *from,
+	      size_t *from_len,
+	      struct sctp_sndrcvinfo *sri,
+	      int *msg_flags);
+
 int
 main(int argc, char **argv)
 {
@@ -9,7 +17,7 @@ main(int argc, char **argv)
 	struct sctp_sndrcvinfo sri;
 	struct sctp_event_subscribe evnts;
 	int stream_increment=1;
-	socklen_t len;
+	size_t len;
 	size_t rd_sz;
 
 	if (argc == 2)

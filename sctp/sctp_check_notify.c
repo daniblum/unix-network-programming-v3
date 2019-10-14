@@ -1,11 +1,11 @@
 #include	"unp.h"
 
 void
-check_notification(int sock_fd,char *recvline,int rd_len)
+sctp_check_notification(int sock_fd,char *recvline,int rd_len)
 {
 	union sctp_notification *snp;
 	struct sctp_assoc_change *sac;
-	struct sockaddr_storage *sal,*sar;
+	struct sockaddr *sal, *sar;
 	int num_rem, num_loc;
 
 	snp = (union sctp_notification *)recvline;

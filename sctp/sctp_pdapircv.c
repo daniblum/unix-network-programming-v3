@@ -6,14 +6,14 @@ static int sctp_pdapi_rdbuf_sz=0;
 
 uint8_t *
 pdapi_recvmsg(int sock_fd,
-	      int *rdlen,
+	      size_t *rdlen,
 	      SA *from,
-	      int *from_len,
+	      socklen_t *from_len,
 	      struct sctp_sndrcvinfo *sri,
 	      int *msg_flags)
 {
 	int rdsz,left,at_in_buf;
-	int frmlen=0;
+	socklen_t frmlen=0;
 
 	if (sctp_pdapi_readbuf == NULL) {
 		sctp_pdapi_readbuf = (uint8_t *)Malloc(SCTP_PDAPI_INCR_SZ);

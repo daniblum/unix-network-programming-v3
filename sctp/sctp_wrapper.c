@@ -31,7 +31,7 @@ Sctp_sendmsg (int s, void *data, size_t len, struct sockaddr *to,
 }
 
 int
-Sctp_bindx(int sock_fd,struct sockaddr_storage *at,int num,int op)
+Sctp_bindx(int sock_fd,struct sockaddr *at,int num,int op)
 {
 	int ret;
 	ret = sctp_bindx(sock_fd,at,num,op);

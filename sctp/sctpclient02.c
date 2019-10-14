@@ -1,5 +1,9 @@
 #include	"unp.h"
 
+#if !defined MSG_ABORT
+#define MSG_ABORT SCTP_ABORT
+#endif
+
 int
 main(int argc, char **argv)
 {

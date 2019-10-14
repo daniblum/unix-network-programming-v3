@@ -1,5 +1,9 @@
 #include	"unp.h"
 
+#if !defined MSG_UNORDERED
+#define MSG_UNORDERED SCTP_UNORDERED
+#endif
+
 void
 sctpstr_cli(FILE *fp, int sock_fd, struct sockaddr *to, socklen_t tolen)
 {
